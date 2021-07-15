@@ -1,5 +1,9 @@
 "use strict";
 
+let isWorking = false;
+let minutes;
+let seconds;
+
 const getInterval = () => {
     const element = document.getElementById("interval");
     let minutes = parseInt(element.setMinutes.value);
@@ -39,47 +43,61 @@ const timeOver = () => {
     console.log("Time up!");
 }
 
-const decreaseTimer = (interval) => {
-    let minutes = interval.minutes;
-    let seconds = interval.seconds;
+const decreaseTimer = () => {
+    // let m = m;
+    // let s = s;
     if(seconds < 1 && minutes > 0) {
         seconds = 59;
         minutes--;
     } else {
         seconds--;
     }
-    return { minutes: minutes, seconds: seconds };
+    // return { minutes: minutes, seconds: seconds };
 }
 
-const updateDom = (interval) => {
+const updateDom = () => {
     const elementMinutes = document.clockForm.minutes;
     const elementSeconds = document.clockForm.seconds;
-    elementMinutes.value = interval.minutes;
-    elementSeconds.value = interval.seconds;
+    elementMinutes.value = minutes;
+    elementSeconds.value = seconds;
 }
 
 const setTimer = () => {
     // const minutesSeconds = getRemain(getCurrentTime());
-    const interval = getInterval();
-    updateDom(interval);
+    // let interval = getInterval();
+    updateDom();
     // const remain = getRemain(interval);
-    decreaseTimer(interval);
-    if(interval.seconds < 0) {
+    // let remain = decreaseTimer(minutes, seconds);
+    decreaseTimer();
+    // console.log("remain: ");
+    // console.log(remain);
+    // if(remain.seconds < 0) {
+    //     timeOver();
+    // } else {
+    //     setTimeout(setTimer(), 1000);
+    // }
+    if(seconds < 0) {
         timeOver();
     } else {
-        setTimeout(setTimer, 1000);
+        setTimeout(setTimer(), 1000);
     }
 }
 
 const startDrawing = () => {
+    const interval = getInterval();
+    minutes = interval.minutes;
+    seconds = interval.seconds;
     setTimer();
 }
 
 const test3 = () => {
     // console.log("Hello World");
-    const interval = getInterval();
-    console.log(interval);
+    // const interval = getInterval();
+    // console.log(interval);
     // const remain = getRemain(350);
     // console.log("remain: ");
     // console.log(remain);
+    // updateDom({ minutes: 0, seconds: 20});
+    // const inverval = decreaseTimer({ minutes: 10, seconds: 0});
+    // console.log(inverval);
 }
