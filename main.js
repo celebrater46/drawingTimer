@@ -1,11 +1,8 @@
 "use strict";
 
 const getInterval = () => {
-    // const elements = document.getElementById("interval");
     const element = document.getElementById("interval");
-    // console.log(element);
     const items = element.interval;
-    // console.log(items);
     for(let i = 0; i < items.length; i++){
         if(items[i].checked){
             return items[i].value;
@@ -30,7 +27,6 @@ const startDrawing = () => {
     const remain = getRemain(interval);
 }
 
-// const test = () => { // test() is not function
 const test3 = () => {
     // console.log("Hello World");
     const interval = getInterval();
