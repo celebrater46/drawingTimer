@@ -1,10 +1,14 @@
 "use strict";
 
 const getInterval = () => {
-    const elements = document.getElementById("interval");
-    for(let i = 0; i < elements.length; i++){
-        if(elements.item(i).checked){
-            return elements.item(i).value;
+    // const elements = document.getElementById("interval");
+    const element = document.getElementById("interval");
+    // console.log(element);
+    const items = element.interval;
+    // console.log(items);
+    for(let i = 0; i < items.length; i++){
+        if(items[i].checked){
+            return items[i].value;
         }
     }
 }
@@ -18,8 +22,6 @@ const getRemain = (interval) => {
     } else {
         seconds = interval;
     }
-    // console.log("Min: " + minutes);
-    // console.log("Sec: " + seconds);
     return { minutes: minutes, seconds: seconds };
 }
 
@@ -30,10 +32,12 @@ const startDrawing = () => {
 
 // const test = () => { // test() is not function
 const test3 = () => {
-    console.log("Hello World");
-    const remain = getRemain(350);
-    console.log("remain: ");
-    console.log(remain);
+    // console.log("Hello World");
+    const interval = getInterval();
+    console.log(interval);
+    // const remain = getRemain(350);
+    // console.log("remain: ");
+    // console.log(remain);
 }
 
 // const setTimer = () => {

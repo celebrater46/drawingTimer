@@ -60,7 +60,7 @@ input[name="start"] {
     cursor: pointer;
     user-select: none;
 }
-fieldset#interval > label {
+fieldset.interval > label {
     font-size: 0.7rem;
     color: #888;
 }
