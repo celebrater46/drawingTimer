@@ -1,3 +1,5 @@
+"use strict";
+
 const getInterval = () => {
     const elements = document.getElementById("interval");
     for(let i = 0; i < elements.length; i++){
@@ -7,18 +9,40 @@ const getInterval = () => {
     }
 }
 
+const getRemain = (interval) => {
+    let minutes = 0;
+    let seconds = 0;
+    if(interval > 59) {
+        minutes = Math.floor(interval / 60);
+        seconds = interval % 60;
+    } else {
+        seconds = interval;
+    }
+    // console.log("Min: " + minutes);
+    // console.log("Sec: " + seconds);
+    return { minutes: minutes, seconds: seconds };
+}
+
 const startDrawing = () => {
     const interval = getInterval();
-
+    const remain = getRemain(interval);
 }
 
-const setTimer = () => {
-    const hms = getRemain(getCurrentTime());
-    elH.value = hms.hour;
-    elM.value = hms.min;
-    elS.value = hms.sec;
-    consoleLog([hms.hour, hms.min, hms.sec], "hms.hour, hms.min, hms.sec", "setTimer", nameOfComponent, true);
-    setTimeout(setTimer, 1000);
+// const test = () => { // test() is not function
+const test3 = () => {
+    console.log("Hello World");
+    const remain = getRemain(350);
+    console.log("remain: ");
+    console.log(remain);
 }
 
-setTimer();
+// const setTimer = () => {
+//     const minutesSeconds = getRemain(getCurrentTime());
+//     const elementMinutes = document.clockForm.minutes;
+//     const elementSeconds = document.clockForm.seconds;
+//     elementMinutes.value = minutesSeconds.minutes;
+//     elementSeconds.value = minutesSeconds.seconds;
+//     setTimeout(setTimer, 1000);
+// }
+//
+// setTimer();
