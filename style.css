@@ -52,13 +52,14 @@ input {
     margin: 0;
     padding: 0;
 }
-input[name="start"] {
-    font-size: 1.5rem;
+input[name="start"], input[name="stop"] {
+    font-size: 1rem;
     background-color: #333;
     border: 1px solid #666;
     margin-top: 30px;
     cursor: pointer;
     user-select: none;
+    padding: 10px;
 }
 /*fieldset.interval > label {*/
 /*    font-size: 0.7rem;*/

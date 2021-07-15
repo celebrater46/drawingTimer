@@ -1,24 +1,26 @@
 "use strict";
 
-let isWorking = false;
-let minutes;
-let seconds;
+let isDrawing = false;
+let minutes = 0;
+let seconds = 30;
+const sound = document.querySelector("#se1");
 
 const getInterval = () => {
     const element = document.getElementById("interval");
-    let minutes = parseInt(element.setMinutes.value);
-    let seconds = parseInt(element.setSeconds.value);
-    if(minutes < 10) {
-        minutes = "0" + minutes;
-    } else if(minutes > 99) {
+    minutes = parseInt(element.setMinutes.value);
+    seconds = parseInt(element.setSeconds.value);
+    if(minutes > 99) {
         minutes = 99;
     }
-    if(seconds < 10) {
-        seconds = "0" + seconds;
-    } else if(seconds > 59) {
+    if(seconds > 59) {
         seconds = 59;
     }
-    return { minutes: minutes, seconds: seconds };
+    if(minutes < 1 && seconds < 1) {
+        minutes = 0;
+        seconds = 1;
+    }
+    // seconds++;
+    // return { minutes: minutes, seconds: seconds };
     // const items = element.interval;
     // for(let i = 0; i < items.length; i++){
     //     if(items[i].checked){
@@ -39,9 +41,10 @@ const getRemain = (interval) => { // interval == obj
     return { minutes: minutes, seconds: seconds };
 }
 
-const timeOver = () => {
-    console.log("Time up!");
-}
+// const timeOver = () => {
+//     // console.log("Time up!");
+//     // getInterval(); // Loop
+// }
 
 const decreaseTimer = () => {
     // let m = m;
@@ -56,10 +59,18 @@ const decreaseTimer = () => {
 }
 
 const updateDom = () => {
+    let m = minutes;
+    let s = seconds;
+    if(m < 10) {
+        m = "0" + m;
+    }
+    if(s < 10) {
+        s = "0" + s;
+    }
     const elementMinutes = document.clockForm.minutes;
     const elementSeconds = document.clockForm.seconds;
-    elementMinutes.value = minutes;
-    elementSeconds.value = seconds;
+    elementMinutes.value = m;
+    elementSeconds.value = s;
 }
 
 const setTimer = () => {
@@ -68,27 +79,48 @@ const setTimer = () => {
     updateDom();
     // const remain = getRemain(interval);
     // let remain = decreaseTimer(minutes, seconds);
-    decreaseTimer();
     // console.log("remain: ");
     // console.log(remain);
+    decreaseTimer();
     // if(remain.seconds < 0) {
     //     timeOver();
     // } else {
     //     setTimeout(setTimer(), 1000);
     // }
-    if(seconds < 0) {
-        timeOver();
-    } else {
-        setTimeout(setTimer(), 1000);
+    console.log("m:");
+    console.log(minutes);
+    console.log("s: ");
+    console.log(seconds);
+    if(seconds < 0 && minutes < 1) {
+        // timeOver();
+        // return;
+        getInterval(); // Loop
+        sound.play();
+    }
+    if(isDrawing) {
+        setTimeout(setTimer, 1000);
     }
 }
 
 const startDrawing = () => {
-    const interval = getInterval();
-    minutes = interval.minutes;
-    seconds = interval.seconds;
-    setTimer();
+    const startButton = document.getElementById("interval").start;
+    if(isDrawing) {
+        isDrawing = false;
+        startButton.value = "Start";
+    } else {
+        isDrawing = true;
+        startButton.value = "Stop";
+        // const interval = getInterval();
+        getInterval();
+        // minutes = interval.minutes;
+        // seconds = interval.seconds;
+        setTimer();
+    }
 }
+
+// const stopDrawing = () => {
+//     isDrawing = false;
+// }
 
 const test3 = () => {
     // console.log("Hello World");
@@ -100,4 +132,5 @@ const test3 = () => {
     // updateDom({ minutes: 0, seconds: 20});
     // const inverval = decreaseTimer({ minutes: 10, seconds: 0});
     // console.log(inverval);
+    // sound.play();
 }
