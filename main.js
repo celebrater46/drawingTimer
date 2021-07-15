@@ -2,15 +2,28 @@
 
 const getInterval = () => {
     const element = document.getElementById("interval");
-    const items = element.interval;
-    for(let i = 0; i < items.length; i++){
-        if(items[i].checked){
-            return items[i].value;
-        }
+    let minutes = parseInt(element.setMinutes.value);
+    let seconds = parseInt(element.setSeconds.value);
+    if(minutes < 10) {
+        minutes = "0" + minutes;
+    } else if(minutes > 99) {
+        minutes = 99;
     }
+    if(seconds < 10) {
+        seconds = "0" + seconds;
+    } else if(seconds > 59) {
+        seconds = 59;
+    }
+    return { minutes: minutes, seconds: seconds };
+    // const items = element.interval;
+    // for(let i = 0; i < items.length; i++){
+    //     if(items[i].checked){
+    //         return items[i].value;
+    //     }
+    // }
 }
 
-const getRemain = (interval) => {
+const getRemain = (interval) => { // interval == obj
     let minutes = 0;
     let seconds = 0;
     if(interval > 59) {
@@ -22,9 +35,44 @@ const getRemain = (interval) => {
     return { minutes: minutes, seconds: seconds };
 }
 
-const startDrawing = () => {
+const timeOver = () => {
+    console.log("Time up!");
+}
+
+const decreaseTimer = (interval) => {
+    let minutes = interval.minutes;
+    let seconds = interval.seconds;
+    if(seconds < 1 && minutes > 0) {
+        seconds = 59;
+        minutes--;
+    } else {
+        seconds--;
+    }
+    return { minutes: minutes, seconds: seconds };
+}
+
+const updateDom = (interval) => {
+    const elementMinutes = document.clockForm.minutes;
+    const elementSeconds = document.clockForm.seconds;
+    elementMinutes.value = interval.minutes;
+    elementSeconds.value = interval.seconds;
+}
+
+const setTimer = () => {
+    // const minutesSeconds = getRemain(getCurrentTime());
     const interval = getInterval();
-    const remain = getRemain(interval);
+    updateDom(interval);
+    // const remain = getRemain(interval);
+    decreaseTimer(interval);
+    if(interval.seconds < 0) {
+        timeOver();
+    } else {
+        setTimeout(setTimer, 1000);
+    }
+}
+
+const startDrawing = () => {
+    setTimer();
 }
 
 const test3 = () => {
@@ -35,14 +83,3 @@ const test3 = () => {
     // console.log("remain: ");
     // console.log(remain);
 }
-
-// const setTimer = () => {
-//     const minutesSeconds = getRemain(getCurrentTime());
-//     const elementMinutes = document.clockForm.minutes;
-//     const elementSeconds = document.clockForm.seconds;
-//     elementMinutes.value = minutesSeconds.minutes;
-//     elementSeconds.value = minutesSeconds.seconds;
-//     setTimeout(setTimer, 1000);
-// }
-//
-// setTimer();

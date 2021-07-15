@@ -28,17 +28,17 @@ form {
     margin: 0;
     padding: 0;
 }
-form[name="interval"] {
+form#interval {
     text-align: left;
 }
-form > input {
+form#clockForm > input {
     width: 200px;
     height: 110px;
     margin: 0;
     padding: 0;
     text-align: center;
 }
-form > input[name="colon"] {
+form#clockForm > input[name="colon"] {
     width: 50px;
 }
 fieldset {
@@ -60,9 +60,17 @@ input[name="start"] {
     cursor: pointer;
     user-select: none;
 }
-fieldset.interval > label {
-    font-size: 0.7rem;
+/*fieldset.interval > label {*/
+/*    font-size: 0.7rem;*/
+/*    color: #888;*/
+/*}*/
+fieldset.interval input {
+    width: 1.5rem;
+    font-size: 1rem;
+    background-color: #333;
     color: #888;
+    text-align: right;
+    padding-right: 4px;
 }
 label.selectSeconds {
     margin-right: 30px;
@@ -98,13 +106,13 @@ div.death {
     p.untilMonday {
         margin: 3vh auto 5vh;
     }
-    form[name="clockForm"] > input {
+    form#clockForm > input {
         width: 30vw;
         height: 30vw;
         font-size: 9rem;
         margin: 0;
     }
-    form[name="clockForm"] > input[name="colon"] {
+    form#clockForm > input[name="colon"] {
         width: 5vw;
     }
 }

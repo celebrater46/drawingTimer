@@ -14,7 +14,7 @@
         <source src="sound/bell.mp3" type="audio/mp3">
     </audio>
 
-    <form name="clockForm">
+    <form id="clockForm" name="clockForm">
         <input type="text" name="minutes" value="00" />
         <input type="text" name="colon" value=":" />
         <input type="text" name="seconds" value="00" />
@@ -22,18 +22,21 @@
 
     <form id="interval">
         <fieldset class="interval">
-            <label class="selectSeconds">Select Seconds</label>
-            <label><input type="radio" name="interval" value="10"> 10</label>
-            <label><input type="radio" name="interval" value="15"> 15</label>
-            <label><input type="radio" name="interval" value="20"> 20</label>
-            <label><input type="radio" name="interval" value="30" checked> 30</label>
-            <label><input type="radio" name="interval" value="40"> 40</label>
-            <label><input type="radio" name="interval" value="60"> 60</label>
-            <label><input type="radio" name="interval" value="90"> 90</label>
-            <label><input type="radio" name="interval" value="120"> 120</label>
-            <label><input type="radio" name="interval" value="180"> 180</label>
-            <label><input type="radio" name="interval" value="300"> 300</label>
-            <label><input type="radio" name="interval" value="600"> 600</label>
+<!--            <label class="selectSeconds">Select Seconds</label>-->
+<!--            <label><input type="radio" name="interval" value="10"> 10</label>-->
+<!--            <label><input type="radio" name="interval" value="15"> 15</label>-->
+<!--            <label><input type="radio" name="interval" value="20"> 20</label>-->
+<!--            <label><input type="radio" name="interval" value="30" checked> 30</label>-->
+<!--            <label><input type="radio" name="interval" value="40"> 40</label>-->
+<!--            <label><input type="radio" name="interval" value="60"> 60</label>-->
+<!--            <label><input type="radio" name="interval" value="90"> 90</label>-->
+<!--            <label><input type="radio" name="interval" value="120"> 120</label>-->
+<!--            <label><input type="radio" name="interval" value="180"> 180</label>-->
+<!--            <label><input type="radio" name="interval" value="300"> 300</label>-->
+<!--            <label><input type="radio" name="interval" value="600"> 600</label>-->
+            <label class="selectSeconds">Set Time</label>
+            <label><input type="text" name="setMinutes" value="0"> :</label>
+            <label><input type="text" name="setSeconds" value="30"></label>
         </fieldset>
         <input type="button" name="start" value="Start" onclick="startDrawing()" />
     </form>
