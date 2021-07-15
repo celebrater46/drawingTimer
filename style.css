@@ -4,18 +4,19 @@ html {
     font-size: 32px;
 }
 body {
-    color:red; 
-    background-color:#000000;
+    color:#ccc;
+    background-color:#000;
     margin: 0 20px;
     padding: 0;
 }
-input { 
-    color: #ff0000;
-    background-color: #000000;
-    border: 0px;
-    font-size: 3rem;
+h1 {
+    color: #333;
+    font-size: 4rem;
     margin: 0;
-    padding: 0;
+}
+h2 {
+    font-size: 0.7rem;
+    margin: 0.5rem auto 0 0.7rem;
 }
 p {
     font-size: 1rem;
@@ -27,12 +28,44 @@ form {
     margin: 0;
     padding: 0;
 }
+form[name="interval"] {
+    text-align: left;
+}
 form > input {
     width: 200px;
     height: 110px;
     margin: 0;
     padding: 0;
     text-align: center;
+}
+form > input[name="colon"] {
+    width: 50px;
+}
+fieldset {
+    border: 0px;
+}
+input {
+    color: #ccc;
+    background-color: #000;
+    border: 0px;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+input[name="start"] {
+    font-size: 1.5rem;
+    background-color: #333;
+    border: 1px solid #666;
+    margin-top: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+fieldset#interval > label {
+    font-size: 0.7rem;
+    color: #888;
+}
+label.selectSeconds {
+    margin-right: 30px;
 }
 div {
     font-size: 1rem;
@@ -59,34 +92,19 @@ div.death {
     html {
         font-size: 2.5vw;
     }
-    form {
+    form[name="clockForm"] {
         display: flex;
     }
     p.untilMonday {
         margin: 3vh auto 5vh;
     }
-    form > input {
-        width: 20vw;
-        height: 20vw;
-        font-size: 6rem;
+    form[name="clockForm"] > input {
+        width: 30vw;
+        height: 30vw;
+        font-size: 9rem;
         margin: 0;
     }
-    div.hms {
-        width: auto;
-        height: 20vw;
-        font-size: 1rem;
-        margin: 0;
-        align-items: flex-end;
-    }
-    div.death {
-        width: 10vw;
-        text-align: left;
-        margin: 0;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-    }
-    div.hms > div, div.death > div {
-        padding-bottom: 4vw;
+    form[name="clockForm"] > input[name="colon"] {
+        width: 5vw;
     }
 }

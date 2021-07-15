@@ -1,32 +1,53 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta http-equiv="Content-Script-Type" content="text/javascript">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
-    <title>恐怖のマンデータイマー</title>
+    <title>Drawing Timer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="月曜日になるまでの残り時間を計測する恐るべきタイマー。">
+    <meta name="description" content="This is a timer for drawing in a short time. Happy Drawing!">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p class="untilMonday">月曜日まで</p>
+    <h1>Happy Drawing!</h1>
+    <audio id="se1" preload>
+<!--        <source src="op.ogg" type="audio/ogg">-->
+        <source src="sound/bell.mp3" type="audio/mp3">
+    </audio>
+
     <form name="clockForm">
-            <input type="text" name="hour" />
-            <div class="hms">
-                <div>時間</div>
-            </div>
-            <input type="text" name="minute" />
-            <div class="hms">
-                <div>分</div>
-            </div>
-            <input type="text" name="sec" />
-            <div class="hms">
-                <div>秒</div>
-            </div>
-            <div class="death">
-                <div>です。</div>    
-            </div>
+        <input type="text" name="minutes" value="00" />
+        <input type="text" name="colon" value=":" />
+        <input type="text" name="seconds" value="00" />
     </form>
+
+    <form name="interval">
+        <fieldset id="interval">
+            <label class="selectSeconds">Select Seconds</label>
+            <label><input type="radio" name="interval" value="10"> 10</label>
+            <label><input type="radio" name="interval" value="15"> 15</label>
+            <label><input type="radio" name="interval" value="20"> 20</label>
+            <label><input type="radio" name="interval" value="30" checked> 30</label>
+            <label><input type="radio" name="interval" value="40"> 40</label>
+            <label><input type="radio" name="interval" value="60"> 60</label>
+            <label><input type="radio" name="interval" value="90"> 90</label>
+            <label><input type="radio" name="interval" value="120"> 120</label>
+            <label><input type="radio" name="interval" value="180"> 180</label>
+            <label><input type="radio" name="interval" value="300"> 300</label>
+            <label><input type="radio" name="interval" value="600"> 600</label>
+        </fieldset>
+<!--        <button id="startButton">Start</button>-->
+        <input type="button" name="start" value="Start" onclick="startDrawing()" />
+    </form>
+
+<!--    <p id="remain">-->
+<!--        <span id="hours">00</span>-->
+<!--        <span class="colon">:</span>-->
+<!--        <span id="minites">00</span>-->
+<!--        <span class="colon">:</span>-->
+<!--        <span id="seconds">00</span>-->
+<!--    </p>-->
+
 
 
     <script type="text/javascript" src="consoleLog.js"></script>
