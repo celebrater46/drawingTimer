@@ -19,43 +19,15 @@ const getInterval = () => {
         minutes = 0;
         seconds = 1;
     }
-    // seconds++;
-    // return { minutes: minutes, seconds: seconds };
-    // const items = element.interval;
-    // for(let i = 0; i < items.length; i++){
-    //     if(items[i].checked){
-    //         return items[i].value;
-    //     }
-    // }
 }
-
-const getRemain = (interval) => { // interval == obj
-    let minutes = 0;
-    let seconds = 0;
-    if(interval > 59) {
-        minutes = Math.floor(interval / 60);
-        seconds = interval % 60;
-    } else {
-        seconds = interval;
-    }
-    return { minutes: minutes, seconds: seconds };
-}
-
-// const timeOver = () => {
-//     // console.log("Time up!");
-//     // getInterval(); // Loop
-// }
 
 const decreaseTimer = () => {
-    // let m = m;
-    // let s = s;
     if(seconds < 1 && minutes > 0) {
         seconds = 59;
         minutes--;
     } else {
         seconds--;
     }
-    // return { minutes: minutes, seconds: seconds };
 }
 
 const updateDom = () => {
@@ -74,26 +46,9 @@ const updateDom = () => {
 }
 
 const setTimer = () => {
-    // const minutesSeconds = getRemain(getCurrentTime());
-    // let interval = getInterval();
     updateDom();
-    // const remain = getRemain(interval);
-    // let remain = decreaseTimer(minutes, seconds);
-    // console.log("remain: ");
-    // console.log(remain);
     decreaseTimer();
-    // if(remain.seconds < 0) {
-    //     timeOver();
-    // } else {
-    //     setTimeout(setTimer(), 1000);
-    // }
-    console.log("m:");
-    console.log(minutes);
-    console.log("s: ");
-    console.log(seconds);
     if(seconds < 0 && minutes < 1) {
-        // timeOver();
-        // return;
         getInterval(); // Loop
         sound.play();
     }
@@ -110,17 +65,10 @@ const startDrawing = () => {
     } else {
         isDrawing = true;
         startButton.value = "Stop";
-        // const interval = getInterval();
         getInterval();
-        // minutes = interval.minutes;
-        // seconds = interval.seconds;
         setTimer();
     }
 }
-
-// const stopDrawing = () => {
-//     isDrawing = false;
-// }
 
 const test3 = () => {
     // console.log("Hello World");
